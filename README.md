@@ -1,3 +1,5 @@
+*Repositório do aluno Rafael S. Bittencourt*
+
 <h1 align="center"> CTD Processing </h1>
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=Versão&message=V.1.5.0&color=GREEN&style=for-the-badge)
