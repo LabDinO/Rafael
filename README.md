@@ -38,7 +38,7 @@ import ctdmodule as ctd
 The pressure, temperature and salinity columns MUST be named respectively as: PRESSURE;DBAR , TEMPERATURE;C , Calc. SALINITY; PSU 
 
 # Quick Start
-Check the quickstart.ipynb notebook for a quick start guide on the package functions
+Check the quickstart.ipynb notebook at the CTDProcessingPackage folder for a quick start guide on the package functions.
 
 # Examples
 Here is a temperature profile of a data without any pre-processing:
