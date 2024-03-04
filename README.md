@@ -1,44 +1,53 @@
 *Repositório do aluno Rafael S. Bittencourt*
 
-<h1 align="center"> CTD Processing </h1>
+<h1 align="center"> CTD Processing Package</h1>
 
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=Versão&message=V.1.7.0&color=GREEN&style=for-the-badge)
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=Versão&message=V.1.7.11&color=GREEN&style=for-the-badge)
 
-# Descrição
-Este é um projeto desenvolvido por Rafael S. Bittencourt como inciação científica do Laboratório de Dinâmica Oceânica.
-O objetivo do projeto é uma rotina em Python para o pré-processamento de dados de CTD.
+# Descrption
+This is a project developed by Rafael S. Bittencourt, oceanography student working at the Ocean Dynamics Laboratory at UFSC.
+The objective is to develop a python program for pre-processing CTD data.
 
-# Funcionalidades
-A rotina possui diversas funções para pré-processar os dados de CTD:
- - normalizar os separadores dos dados;
- - seaparar o downcast do aparelho de CTD;
- - retirar spikes seguindo o método 3-sigma;
- - retirar loops de pressão;
- - retirar dados medidos acima da coluna d'água;
- - aplicar um filtro passa-baixa;
- - binagem dos dados.
+# How to install it
+```pip install CTDProcessingPackage```
 
-# Acesso à rotina
-Para utilizar a rotina só é preciso que baixe o arquivo python da versão mais recente disponível e altere os parãmetros pessoais do código: 
+# Requirements
+To be able to use all the CTDProcessingPackage functions, the CTD data file must be a Pandas dataframe, so don't forget to: 
 ```Python
-data = pd.read_csv('path_do_arquivo', delimiter='delimitador do seu arquivo', index_col=False)
-```
-Certifique-se que as colunas de pressão, temperatura e salinidade tenham o nome 'pressure', 'temperature' e 'salinity' respectivamente.
-É necessário também alterar o path para o salvamento dos novos arquivos gerados, tanto os novos arquivos .csv quanto as imagens dos gráficos em .png:
-```Python
-plt.savefig("nome_do_arquivo.png", format='png', dpi=900, transparent=False)
-data_processada.to_csv('path_mais_nome_do_arquivo.csv')
-binado.to_csv('path_mais_nome_do_arquivo.csv')
+import pandas as pd
+
+data = pd.read_csv('PATH')
 ```
 
-# Exemplos
-Aqui está o exemplo de um arquivo de dados de CTD sem ter nenhum tipo de pré-processamento:
+# How to use it
+```Python
+import ctdmodule as ctd
+```
+# Package functions
+- plot: plot a simple temperature profile
+- plot_perfil_termosal: plot a temperature and salinity profile together
+- diagramats: plot a T-S diagram with density isolines
+- convert: convert the decimal and thousands separator
+- downcast: overwrite the data maintaining only the CTD dowcast data
+- remove_outliers: remove the data outliers using the 3-sigma method
+- above_sea_level: remove the data collected above the sea level
+- pressure_loops: remove the pressure loops from the data
+- bin_average: bin averaging
 
-![Perfil de dados brutos](CTDProcessing/Perfis/Perfil_bruto.png)
+# Attention!
+The pressure, temperature and salinity columns MUST be named respectively as: PRESSURE;DBAR , TEMPERATURE;C , Calc. SALINITY; PSU 
 
-Podemos perceber diversos ruídos e laços de pressão, bem como dados indesejados acima da coluna d'água. Após o processamento utilizando a rotina, este é o resultado gerado para o mesmo arquivo de dados:
+# Quick Start
+Check the quickstart.ipynb notebook for a quick start guide on the package functions
 
-![Perfil depois de todas as etapas de processamento](CTDProcessing/Perfis/Perfil_binado.png)
+# Examples
+Here is a temperature profile of a data without any pre-processing:
+
+![Perfil de dados brutos](https://github.com/faelvulgo/CTDprocessing/blob/master/perfis/Perfil_bruto.png)
+
+We can see noises and loops in this data, so after using some functions of the package we will have something like this:
+
+![Perfil depois de todas as etapas de processamento](https://github.com/faelvulgo/CTDprocessing/blob/master/perfis/Perfil_binado.png)
 
 <h1 align="center"> Internal Waves </h1>
 
